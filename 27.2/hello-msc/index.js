@@ -16,6 +16,7 @@ app.post('/authors', Author.create);
 
 app.get('/books', Book.getAll);
 app.get('/books/author/:id', Book.findByAuthorId);
+app.get('/books/title/:title', Book.findByTitle);
 app.get('/books/:id', Book.findById);
 app.post('/books', Book.create);
 

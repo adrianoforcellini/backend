@@ -1,5 +1,3 @@
-// models/Book.js
-
 const { ObjectId } = require('mongodb');
 const connection = require('./connection');
 
@@ -9,19 +7,36 @@ const getAll = () => connection()
     .then((db) => db.collection('books').find({}).toArray())
     .then((results) => results.map(renameId));
 
-const findByAuthorId = async (id) => await connection()
-    .then((db) => db.collection('books').find({ authorId : id }).toArray())
-    .then((result) => (result ? renameId(result) : result));
+const findByAuthorId = async (id) => {
+    const books = await connection()
+        .then((db) => db.collection('books').find({ author_id: id * 1 }, { _id: false }).toArray())
+    return books;
+}
+
+// const titleEdit = (title) =>{
+//     return "/" + title + "/"
+// }
+const findByTitle = async (title) => {
+    // const newTitle = titleEdit(title)
+    // console.log(newTitle, typeof(newTitle))
+    const book = await connection()
+        .then((db) => db.collection('books').find().toArray())
+    const newArr = [];
+    for (let i = 0; i < book.length; i += 1) {
+        if (JSON.stringify(book[i].title).includes(title)) {
+            newArr.push(book[i])
+        }
+    }
+    return newArr;
+}
 
 const findById = async (id) => {
-  if (!ObjectId.isValid(id)) return null;
+    if (!ObjectId.isValid(id)) return null;
+    const book = await connection()
+        .then((db) => db.collection('books').findOne({ _id: ObjectId(id) }));
+    if (!book) return null;
 
-  const book = await connection()
-    .then((db) => db.collection('books').findOne(new ObjectId(id)));
-
-  if (!book) return null;
-
-  return book;
+    return book;
 };
 
 const create = (title, authorId) => connection()
@@ -29,8 +44,9 @@ const create = (title, authorId) => connection()
     .then((result) => ({ id: result.insertedId, title, authorId }));
 
 module.exports = {
-  getAll,
-  findByAuthorId,
-  findById,
-  create,
+    getAll,
+    findByAuthorId,
+    findById,
+    create,
+    findByTitle,
 };

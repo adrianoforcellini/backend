@@ -57,13 +57,11 @@ const findById = async (id) => {
 
 const isNonEmptyString = (value) => {
     if (!value) return false;
-
     return typeof value === 'string';
 };
 
 const isValid = (firstName, middleName, lastName) => {
     if (middleName && typeof middleName !== 'string') return false;
-
     return isNonEmptyString(firstName) && isNonEmptyString(lastName);
 };
 
