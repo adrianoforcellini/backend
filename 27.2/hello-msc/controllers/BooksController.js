@@ -18,6 +18,16 @@ const findById = rescue(async (req, res, next) => {
   res.status(200).json(book);
 });
 
+const findByAuthorId = rescue(async (req, res, next) => {
+    const { id } = req.params;
+  
+    const book = await Book.findByAuthorId(id);
+  
+    if (book.error) return next(book.error);
+  
+    res.status(200).json(book);
+  });
+
 const create = rescue(async (req, res, next) => {
   const { error } = Joi.object({
     title: Joi.string().not().empty().required(),
@@ -39,5 +49,6 @@ const create = rescue(async (req, res, next) => {
 module.exports = {
   getAll,
   findById,
+  findByAuthorId,
   create,
 };

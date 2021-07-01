@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 
 const Author = require('./controllers/Author');
 const Book = require('./controllers/BooksController');
-const errorMiddleware = require('./middlewares/error');
+const errorMiddleware = require('./middlewares/error.js');
 
 const app = express();
 
@@ -15,6 +15,7 @@ app.get('/authors/:id', Author.findById);
 app.post('/authors', Author.create);
 
 app.get('/books', Book.getAll);
+app.get('/books/author/:id', Book.findByAuthorId);
 app.get('/books/:id', Book.findById);
 app.post('/books', Book.create);
 

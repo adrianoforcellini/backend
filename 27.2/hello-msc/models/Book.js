@@ -9,8 +9,8 @@ const getAll = () => connection()
     .then((db) => db.collection('books').find({}).toArray())
     .then((results) => results.map(renameId));
 
-const getByAuthorId = (authorId) => connection()
-    .then((db) => db.collection('books').find({ authorId }).toArray())
+const findByAuthorId = async (id) => await connection()
+    .then((db) => db.collection('books').find({ authorId : id }).toArray())
     .then((result) => (result ? renameId(result) : result));
 
 const findById = async (id) => {
@@ -30,7 +30,7 @@ const create = (title, authorId) => connection()
 
 module.exports = {
   getAll,
-  getByAuthorId,
+  findByAuthorId,
   findById,
   create,
 };
