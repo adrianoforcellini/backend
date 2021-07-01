@@ -5,7 +5,6 @@ const Book = require('../services/Book');
 
 const getAll = rescue(async (req, res) => {
   const books = await Book.getAll();
-
   res.status(200).json(books);
 });
 
