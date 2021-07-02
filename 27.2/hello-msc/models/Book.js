@@ -17,17 +17,20 @@ const findByAuthorId = async (id) => {
 //     return "/" + title + "/"
 // }
 const findByTitle = async (title) => {
-    // const newTitle = titleEdit(title)
-    // console.log(newTitle, typeof(newTitle))
-    const book = await connection()
-        .then((db) => db.collection('books').find().toArray())
-    const newArr = [];
-    for (let i = 0; i < book.length; i += 1) {
-        if (JSON.stringify(book[i].title).includes(title)) {
-            newArr.push(book[i])
-        }
-    }
-    return newArr;
+    // const book = await connection()
+    //     .then((db) => db.collection('books').find().toArray())
+    // const newArr = [];
+    // for (let i = 0; i < book.length; i += 1) {
+    //     if (JSON.stringify(book[i].title).includes(title)) {
+    //         newArr.push(book[i])
+    //     }
+    // }
+    // return newArr;
+    return await connection()
+    .then((db) => db.collection('books').find( { 'title' : { '$regex' : title } } )
+    .toArray())
+
+
 }
 
 const findById = async (id) => {
@@ -35,7 +38,6 @@ const findById = async (id) => {
     const book = await connection()
         .then((db) => db.collection('books').findOne({ _id: ObjectId(id) }));
     if (!book) return null;
-
     return book;
 };
 
