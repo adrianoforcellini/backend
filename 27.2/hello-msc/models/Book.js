@@ -27,10 +27,8 @@ const findByTitle = async (title) => {
     // }
     // return newArr;
     return await connection()
-    .then((db) => db.collection('books').find( { 'title' : { '$regex' : title } } )
-    .toArray())
-
-
+        .then((db) => db.collection('books').find({ title: { $regex: "cla", $options: 'i' } })
+            .toArray())
 }
 
 const findById = async (id) => {
