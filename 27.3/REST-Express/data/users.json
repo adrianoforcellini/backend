@@ -1,0 +1,16 @@
+{
+    "users": {
+        "data": [
+            {
+                "id": 1,
+                "name": "Mário Machado",
+                "phone": "+55 016 9970 7070"
+            },
+            {
+                "id": 2,
+                "name": "Roberval Nabopolassar",
+                "phone": "+55 016 9970 se não conseguir, 70 de novo"
+            }
+        ]
+    }
+}
