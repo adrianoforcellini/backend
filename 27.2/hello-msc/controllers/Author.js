@@ -31,7 +31,7 @@ const create = rescue(async (req, res, next) => {
       // Deve ser uma string não vazia e é obrigatório
       lastName: Joi.string().not().empty().required(),
     })
-      // Por fim, pedimos que o Joi verifique se o corpo da requisição se adequa a essas regras
+    // Por fim, pedimos que o Joi verifique se o corpo da requisição se adequa a essas regras
       .validate(req.body);
     // Caso exista algum problema com a validação, iniciamos o fluxo de erro e interrompemos o middleware.
     if (error) {
