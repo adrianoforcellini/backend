@@ -22,7 +22,7 @@ fetch('https://postman-echo.com/get?param1=teste', { headers })
     return response.json();
 })
     .then((data) => {
-        // Por fim, escrevemos o body no console
+        // Por fim, escrevemos o body no consol
         console.log(data);
     })
     .catch((errorOrResponse) => {
