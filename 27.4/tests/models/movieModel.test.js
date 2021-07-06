@@ -1,5 +1,7 @@
 const { expect } = require('chai');
+const sinon = require('sinon');
 const MoviesModel = require('../../models/movieModel');
+const { MongoClient } = require('mongodb');
 
 /*
   Como ainda não temos a implementação, vamos fixar
@@ -15,7 +17,26 @@ describe('Insere um novo filme no BD', () => {
     title: 'Example Movie',
     directedBy: 'Jane Dow',
     releaseYear: 1999,
-  }
+  };
+  before(() => {
+    const ID_EXAMPLE = '604cb554311d68f491ba5781';
+    const connectionMock = {
+      db: async () => ({
+        collection: async () => ({
+          insertOne: async () => ({
+            insertedId: ID_EXAMPLE,
+          })
+        })
+      })
+    };
+
+    sinon.stub(MongoClient, 'connect').resolves(connectionMock);
+  });
+
+  // Restauraremos a função `connect` original após os testes.
+  after(() => {
+    MongoClient.connect.restore();
+  });
 
   describe('quando é inserido com sucesso', async () => {
 
