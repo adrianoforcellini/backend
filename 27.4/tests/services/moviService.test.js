@@ -1,5 +1,6 @@
 const { expect } = require('chai');
-
+const sinon = require('sinon');
+const MoviesModel = require('../../models/movieModel');
 const MoviesService = require('../../services/movieService');
 
 /*
@@ -30,7 +31,21 @@ describe('Insere um novo filme no BD', () => {
       title: 'Example Movie',
       directedBy: 'Jane Dow',
       releaseYear: 1999,
-    };
+    }; 
+    
+    // inserção dos stub
+    before(() => {
+        const ID_EXAMPLE = '604cb554311d68f491ba5781';
+  
+        sinon.stub(MoviesModel, 'create')
+          .resolves({ id: ID_EXAMPLE });
+      });
+  
+      // Restauraremos a função `create` original após os testes.
+      after(() => {
+        MoviesModel.create.restore();
+      });
+      // fim da inserção 
 
     it('retorna um objeto', async () => {
       const response = await MoviesService.create(payloadMovie);
