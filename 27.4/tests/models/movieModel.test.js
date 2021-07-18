@@ -34,7 +34,7 @@ describe('Insere um novo filme no BD', () => {
 
   //   sinon.stub(MongoClient, 'connect').resolves(connectionMock);
   // });  -> isolando os teste com sinon stub ( criando uma implementação ao stub )
-
+  
   // agora , o mesmo procedimento, mas isolandoo IO com um banco de dados em memória ( mongodb-memory-server )
   
   before(async () => {
