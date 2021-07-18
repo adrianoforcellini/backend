@@ -17,7 +17,7 @@ module.exports = async (req, res, next) => {
   /* Caso ocorra erro na validação do Joi, passamos esse */
   /* erro para o express, que chamará nosso middleware de erro */
   if (error) return next(error);
-  
+
   const payload = {
     username: req.body.username,
     admin: false,
