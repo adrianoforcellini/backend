@@ -42,6 +42,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/ping', controllers.ping);
+app.use(express.static(`${__dirname}/uploads`));
 
 app.use(middlewares.error);
 
