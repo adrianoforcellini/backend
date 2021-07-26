@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const plantsModule = require("./plants.js");
+const plantsModule = require("./Models/plants.js");
 
 app.use(express.json());
 
