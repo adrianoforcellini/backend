@@ -7,7 +7,7 @@ const config = require('./config/config');
 const app = express();
 app.use(bodyParser.json());
 
-const sequelize = new Sequelize(config.development);
+// const sequelize = new Sequelize(config.development);
 
 
 app.get('/employees', async (_req, res) => {
