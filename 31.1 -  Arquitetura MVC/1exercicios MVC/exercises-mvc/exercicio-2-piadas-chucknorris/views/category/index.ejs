@@ -12,12 +12,16 @@
     <h1>
       <%= randomJokeByCategory.value %>
     </h1>
+    <a class="mandaoutra" href=<%=randomJokeByCategory.categories[0] %>>
+      GIVE ME MORE!!!
+    </a>
     <a href="/">
-      ESCOLHER OUTRA CATEGORIA
+      I WANNA CHOOSE ANOTHER CATEGORY
     </a>
   </div>
 </body>
 <style>
+
   body {
     background-color: whitesmoke;
   }
@@ -46,6 +50,17 @@
     padding: 3px 8px;
     text-decoration: none;
   }
+  .mandaoutra {
+    background-color: orangered;
+    top: 70%;
+    position: absolute;
+    border-radius: 4px;
+    border: 1px solid black;
+    color: white;
+    font-size: 20;
+    text-decoration: none;
+  }
+
 </style>
 
 </html>
