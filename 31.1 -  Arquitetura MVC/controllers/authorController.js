@@ -20,11 +20,10 @@ const newAuthor = (req, res) => {
 
 const createAuthor = async (req, res) => {
   const { first_name, middle_name, last_name } = req.body;
-
-  if (!Author.isValid(first_name, middle_name, last_name)) {
+  const isValid = await Author.isValid(first_name, middle_name, last_name);
+  if (!isValid) {
     return res.render('authors/new', { message: 'Dados inválidos' });
   }
-
   await Author.create(first_name, middle_name, last_name);
   res.redirect('authors');
 };

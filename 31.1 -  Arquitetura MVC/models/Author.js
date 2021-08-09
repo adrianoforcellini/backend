@@ -56,11 +56,17 @@ const findById = async (id) => {
   });
 };
 
-const isValid = (firstName, middleName, lastName) => {
+const isValid = async (firstName, middleName, lastName) => {
   if (!firstName || typeof firstName !== 'string') return false;
   if (!lastName || typeof lastName !== 'string') return false;
   if (middleName && typeof middleName !== 'string') return false;
-
+  const all = await getAll();
+  for (let i in all) {
+    if (all[i].firstName === firstName && all[i].lastName === lastName && all[i].middleName === middleName) {
+      console.log('oi')
+      return false
+    }
+  }
   return true;
 };
 
