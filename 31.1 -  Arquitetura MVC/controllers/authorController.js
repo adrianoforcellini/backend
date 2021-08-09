@@ -28,8 +28,6 @@ const createAuthor = async (req, res) => {
   res.redirect('authors');
 };
 
-
-
 module.exports = {
   listAuthors,
   showAuthor,

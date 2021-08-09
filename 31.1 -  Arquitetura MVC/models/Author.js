@@ -63,7 +63,6 @@ const isValid = async (firstName, middleName, lastName) => {
   const all = await getAll();
   for (let i in all) {
     if (all[i].firstName === firstName && all[i].lastName === lastName && all[i].middleName === middleName) {
-      console.log('oi')
       return false
     }
   }
