@@ -1,0 +1,17 @@
+{
+  "name": "sockets-tcp-udp-net",
+  "version": "1.0.0",
+  "description": "-Camada 1: Física É a camada que estabelece a comunicação real entre os dois dispositivos por meio físico, seja através do cabo de internet, seja através de onda de radiofrequência, como por exemplo a wifi, dentre outras.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "dev": "nodemon project/client.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "net": "^1.0.2",
+    "nodemon": "^2.0.12"
+  }
+}
