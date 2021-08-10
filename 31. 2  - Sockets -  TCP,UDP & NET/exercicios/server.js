@@ -7,8 +7,9 @@ const server = net.createServer((conn) => {
     console.log('Cliente desconectado');
   });
 
-  conn.on('data', (data) => {
-    console.log(`O cliente disse: ${data}`);
+  conn.on('data', (strData) => {
+    const data = JSON.parse(strData)
+    console.log(`O cliente ${data.id} disse: ${data.message}`);
   });
 
   conn.write('Mensagem do servidor!\r\n');
