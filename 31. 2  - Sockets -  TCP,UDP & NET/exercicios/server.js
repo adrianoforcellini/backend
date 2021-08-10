@@ -1,4 +1,5 @@
 const net = require('net');
+const { type } = require('os');
 
 const server = net.createServer((conn) => {
   console.log('Cliente Conectado')
@@ -9,7 +10,9 @@ const server = net.createServer((conn) => {
 
   conn.on('data', (strData) => {
     const data = JSON.parse(strData)
-    console.log(`O cliente ${data.id} disse: ${data.message}`);
+    const date = new Date();
+    const time = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}  `
+        console.log(`O cliente ${data.id} disse: ${data.message} as ${time} `);
   });
 
   conn.write('Mensagem do servidor!\r\n');
