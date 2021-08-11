@@ -19,6 +19,7 @@ app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
+  res.redirect('/chat.html')
 });
 
 http.listen(3000, () => {
