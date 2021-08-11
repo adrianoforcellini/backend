@@ -22,7 +22,6 @@ const server = net.createServer((conn) => {
 server.getConnections((err, count) => { 
   console.log(`${count} clients connected to server` )
 });
-//  dosn't work. 
 
 server.listen(8080, () => {
   console.log('Servidor escutando na porta 8080');
