@@ -10,8 +10,8 @@ const io = require('socket.io')(http, {
 });
 
 
-// require('./sockets/ping')(io);
 require('./sockets/chat')(io);
+require('./sockets/rooms')(io);
 
 
 app.use(express.static(__dirname + '/public'));
