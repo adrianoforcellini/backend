@@ -4,6 +4,6 @@ module.exports = (io) => io.on('connection', (socket) => {
   socket.on('like', () => {
     currentLikes += 1;
 
-    socket.emit('updateLikes', currentLikes);
+    io.emit('updateLikes', currentLikes);
   })
 });
