@@ -11,7 +11,7 @@ const io = require('socket.io')(http, {
 
 app.use(express.static(__dirname + '/public'));
 
-require('./sockets/ping')(io);
+require('../sochat.io/sockets/ping')(io);
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
