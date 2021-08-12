@@ -9,6 +9,7 @@ socket.on('updateLikes', (countLikes) => {
 });
 
 document.querySelector('#starIcon').addEventListener('click', () => {
+  console.log('starclick')
   const currentStarsElement = document.querySelector('#currentStars');
   let currentStars = parseInt(currentStarsElement.innerHTML);
   
